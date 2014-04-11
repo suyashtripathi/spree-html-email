@@ -1,10 +1,10 @@
 <div class="address" id="shipping">
   <h2><%= t(:shipping_address) %></h2>
-  <%= render :partial => 'spree/shared/email/address', :locals => {:address => shipment.address} %>
+  <%= render :partial => 'spree/shared/email/address', :locals => {:address => shipment.order.ship_address} %>
 </div>
 
 <table data-hook="shipment_details">
-  <tbody id="line-items" "data-hook" => "">
+  <tbody id="line-items" data-hook="">
     <tr data-hook="shipment_details_line_items_headers">
       <th><%= t(:item_description) %></th>
       <th class="qty number"><%= t(:qty) %></th>
