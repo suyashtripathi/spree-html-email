@@ -50,9 +50,9 @@
           <%= item.variant.product.name %>
           <%= "(" + variant_options(item.variant) + ")" unless item.variant .option_values.empty? %>
         </td>
-        <td class="price number"><%= number_to_currency(item.price) %></td>
+        <td class="price number"><%= item.single_money.to_html %></td>
         <td class="qty number"><%= item.quantity %></td>
-        <td class="total number"><%= number_to_currency(item.price * item.quantity) %></td>
+        <td class="total number"><%= item.display_amount.to_html %></td>
       </tr>
     <% end %>
   </tbody>
@@ -62,7 +62,7 @@
         <%= t(:subtotal) %>
       </td>
       <td class="total number">
-        <%= number_to_currency order.item_total %>
+        <%= order.display_total.to_html %>
       </td>
     </tr>
   </tbody>
@@ -74,7 +74,7 @@
           <%= adjustment.label %>
         </td>
         <td class="total number">
-          <%= number_to_currency adjustment.amount %>
+          <%= adjustment.display_amount.to_html %>
         </td>
       </tr>
     <% end %>
@@ -85,7 +85,7 @@
         <%= t(:order_total) %>
       </td>
       <td class="total number">
-        <span id="order_total"><%= number_to_currency order.total %></span>
+        <span id="order_total"><%= order.display_total.to_html %></span>
       </td>
     </tr>
   </tbody>
@@ -110,3 +110,4 @@ item.digital_links.each do |link|
 <% end %>
 <% end %>
 <% end %>
+      
